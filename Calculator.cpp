@@ -2,8 +2,20 @@
 
 using namespace std;
 
+void Option();
 int numOf,result=0,a;
 
+
+void Retry ()
+{
+	char retryOption;
+	cout<<"Want to calculate again? (y/n)";
+	cin>>retryOption;
+	if(retryOption == 'y' || retryOption == 'Y')
+		Option();
+	else
+		return;
+}
 void Add ()
 {
     int numOf,result=0,a;
@@ -13,13 +25,14 @@ void Add ()
 
      for(int i=0 ; i<numOf ; i++)
     {
-        cout<<"Enter num. \n";
+        cout<<"Enter num."<<i+1<<" \n";
         cin>>a;
 
         result+=a;
     }
 
-    cout<<result<<endl;
+    cout<<"Result = "<<result<<endl;
+    Retry();
 
 }
 void Minus ()
@@ -31,13 +44,14 @@ void Minus ()
 
      for(int i=0 ; i<numOf ; i++)
     {
-        cout<<"Enter num. \n";
+        cout<<"Enter num."<<i+1<<" \n";
         cin>>a;
 
         result-=a;
     }
 
-    cout<<result<<endl;
+    cout<<"Result = "<<result<<endl;
+    Retry();
 
 }
 
@@ -50,13 +64,14 @@ void Multi ()
 
      for(int i=0 ; i<numOf ; i++)
     {
-        cout<<"Enter num. \n";
+        cout<<"Enter num."<<i+1<<" \n";
         cin>>a;
 
         result*=a;
     }
 
-    cout<<result<<endl;
+    cout<<"Result = "<<result<<endl;
+    Retry();
 
 }
 void Divide ()
@@ -68,29 +83,19 @@ void Divide ()
 
      for(int i=0 ; i<numOf ; i++)
     {
-        cout<<"Enter num. \n";
+        cout<<"Enter num."<<i+1<<" \n";
         cin>>a;
 
         result/=a;
     }
 
-    cout<<result<<endl;
+    cout<<"Result = "<<result<<endl;
+    Retry();
 
 }
-
-int main ()
+void Option ()
 {
     int choose;
-
-    cout<<"             *****           ******************\n";
-    cout<<"             *****           *                *\n";
-    cout<<"             *****           * The Calculator *\n";
-    cout<<"             *****           *                *\n";
-    cout<<"           *********         ******************\n";
-    cout<<"            *******\n";
-    cout<<"             *****\n";
-    cout<<"              ***\n";
-    cout<<"               *\n";
 
     cout<<"\n*Choose the way you want:\n                     1-Add.\n                     2-Minus.\n                     3-Multi.\n                     4-Divide.\n";
     cin>>choose;
@@ -102,9 +107,22 @@ int main ()
         case 2: Minus();  break;
         case 3: Multi();  break;
         case 4: Divide(); break;
-        default: cout<<"Wrong number. \n"; break;
+        default: cout<<"Wrong number. \n"; Retry(); break;
     }
+}
+int main ()
+{
+    cout<<"             *****           ******************\n";
+    cout<<"             *****           *                *\n";
+    cout<<"             *****           * The Calculator *\n";
+    cout<<"             *****           *                *\n";
+    cout<<"           *********         ******************\n";
+    cout<<"            *******\n";
+    cout<<"             *****\n";
+    cout<<"              ***\n";
+    cout<<"               *\n";
 
+    Option();
     return 0;
 }
 
